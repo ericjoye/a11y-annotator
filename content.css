@@ -1,0 +1,153 @@
+/* content.css — Styles for a11y-annotator overlay pins */
+
+.a11y-pin {
+  position: absolute;
+  width: 28px;
+  height: 28px;
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 14px;
+  font-weight: bold;
+  color: white;
+  cursor: pointer;
+  z-index: 2147483647;
+  box-shadow: 0 2px 8px rgba(0,0,0,0.3);
+  border: 2px solid white;
+  transition: transform 0.15s ease;
+  pointer-events: auto;
+}
+
+.a11y-pin:hover {
+  transform: scale(1.2);
+  z-index: 2147483648;
+}
+
+.a11y-pin-error {
+  background: #dc3545;
+}
+
+.a11y-pin-warning {
+  background: #ffc107;
+  color: #333;
+}
+
+.a11y-pin-info {
+  background: #0d6efd;
+}
+
+.a11y-annotation-popup {
+  position: absolute;
+  background: white;
+  border: 1px solid #ccc;
+  border-radius: 8px;
+  padding: 12px;
+  z-index: 2147483649;
+  box-shadow: 0 4px 16px rgba(0,0,0,0.2);
+  min-width: 280px;
+  max-width: 400px;
+  font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+  font-size: 14px;
+  line-height: 1.5;
+  color: #333;
+  pointer-events: auto;
+}
+
+.a11y-annotation-popup h4 {
+  margin: 0 0 8px 0;
+  font-size: 15px;
+}
+
+.a11y-annotation-popup .severity {
+  display: inline-block;
+  padding: 2px 8px;
+  border-radius: 4px;
+  font-size: 12px;
+  font-weight: 600;
+  text-transform: uppercase;
+  margin-bottom: 8px;
+}
+
+.a11y-annotation-popup .severity.error {
+  background: #dc3545;
+  color: white;
+}
+
+.a11y-annotation-popup .severity.warning {
+  background: #ffc107;
+  color: #333;
+}
+
+.a11y-annotation-popup .severity.info {
+  background: #0d6efd;
+  color: white;
+}
+
+.a11y-annotation-popup textarea {
+  width: 100%;
+  border: 1px solid #ccc;
+  border-radius: 4px;
+  padding: 6px;
+  font-size: 13px;
+  resize: vertical;
+  min-height: 60px;
+  box-sizing: border-box;
+  font-family: inherit;
+}
+
+.a11y-annotation-popup .actions {
+  margin-top: 8px;
+  display: flex;
+  gap: 8px;
+  justify-content: flex-end;
+}
+
+.a11y-annotation-popup button {
+  padding: 4px 12px;
+  border: none;
+  border-radius: 4px;
+  cursor: pointer;
+  font-size: 13px;
+}
+
+.a11y-annotation-popup .btn-save {
+  background: #198754;
+  color: white;
+}
+
+.a11y-annotation-popup .btn-close {
+  background: #6c757d;
+  color: white;
+}
+
+.a11y-annotation-popup .btn-delete {
+  background: #dc3545;
+  color: white;
+}
+
+.a11y-highlight {
+  outline: 3px dashed rgba(220, 53, 69, 0.5) !important;
+  outline-offset: 2px !important;
+}
+
+.a11y-summary-toast {
+  position: fixed;
+  bottom: 20px;
+  right: 20px;
+  background: #333;
+  color: white;
+  padding: 12px 20px;
+  border-radius: 8px;
+  z-index: 2147483647;
+  font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+  font-size: 14px;
+  box-shadow: 0 4px 16px rgba(0,0,0,0.3);
+  pointer-events: none;
+  opacity: 0;
+  transition: opacity 0.3s ease;
+}
+
+.a11y-summary-toast.visible {
+  opacity: 1;
+}

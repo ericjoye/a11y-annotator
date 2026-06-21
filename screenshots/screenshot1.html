@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<style>
+body{font-family:-apple-system,BlinkMacSystemFont,sans-serif;background:#0a0a0f;color:#e4e4e7;margin:0;padding:20px;width:380px}
+.header{display:flex;align-items:center;gap:10px;margin-bottom:14px}
+.logo{width:32px;height:32px;background:linear-gradient(135deg,#22c55e,#14b8a6);border-radius:8px;display:flex;align-items:center;justify-content:center;font-weight:700;color:#000}
+.title{font-size:1.1rem;font-weight:700;color:#22c55e}
+.summary{background:#18181b;border-radius:8px;padding:12px;margin-bottom:12px}
+.summary-row{display:flex;justify-content:space-between;margin-bottom:6px;font-size:0.85rem}
+.summary-row:last-child{margin-bottom:0}
+.pass{color:#22c55e}.fail{color:#ef4444}.warn{color:#f59e0b}
+.issues{list-style:none;padding:0;margin:0}
+.issue{display:flex;align-items:flex-start;gap:8px;padding:8px;background:#18181b;border-radius:6px;margin-bottom:6px;font-size:0.8rem}
+.badge{padding:2px 6px;border-radius:4px;font-size:0.65rem;font-weight:700;flex-shrink:0}
+.badge-critical{background:#ef4444;color:#fff}
+.badge-warning{background:#f59e0b;color:#000}
+.badge-pass{background:#22c55e;color:#000}
+.issue-text{flex:1}
+.btn{display:block;width:100%;padding:10px;margin:6px 0;border:none;border-radius:6px;background:#22c55e;color:#000;font-weight:600;cursor:pointer;text-align:center;font-size:0.85rem}
+</style>
+</head>
+<body>
+<div class="header">
+<div class="logo">A</div>
+<div class="title">A11y Annotator</div>
+</div>
+<div class="summary">
+<div class="summary-row"><span>Page scanned</span><span style="color:#22c55e">example.com</span></div>
+<div class="summary-row"><span>Issues found</span><span class="fail">7 critical · 3 warning</span></div>
+<div class="summary-row"><span>WCAG level</span><span class="warn">AA (partial)</span></div>
+</div>
+<ul class="issues">
+<li class="issue"><span class="badge badge-critical">CRITICAL</span><span class="issue-text">Image missing alt text (3 instances)</span></li>
+<li class="issue"><span class="badge badge-critical">CRITICAL</span><span class="issue-text">Color contrast ratio 2.8:1 (min 4.5:1)</span></li>
+<li class="issue"><span class="badge badge-warning">WARNING</span><span class="issue-text">Form field missing associated label</span></li>
+<li class="issue"><span class="badge badge-warning">WARNING</span><span class="issue-text">Link text "click here" not descriptive</span></li>
+</ul>
+<button class="btn">Pin Annotations on Page</button>
+</body>
+</html>
