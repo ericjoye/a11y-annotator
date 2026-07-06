@@ -2,13 +2,13 @@
 
 ## Extension Name
 
-**a11y-annotator — Accessibility Issue Annotator**
+**a11y-annotator — Accessibility Scanner & WCAG Checker**
 
 ## Short Description (132 chars max)
 
-Scan any page for accessibility issues, pin and annotate them visually, and export shareable reports. No account required.
+Scan any page for WCAG accessibility issues, pin visual annotations onto elements, and export reports. No account required.
 
-## Long Description
+## Detailed Description
 
 a11y-annotator is a privacy-first Chrome extension that scans any webpage for accessibility issues, lets you pin and annotate them with visual markers, and export shareable reports — all from your browser, with no account required.
 
@@ -19,7 +19,7 @@ Click the extension icon to run 20+ automated accessibility checks on the active
 Click any pin to add a text note explaining the fix or assigning it to a teammate. Notes persist for the page session. The Issue Dashboard panel lists all detected issues grouped by type, with severity badges and WCAG Success Criterion references (e.g., "1.1.1 Non-text Content"). When you're done, export a Markdown report with page URL, scan timestamp, issue list with severity, WCAG references, element selectors, and your annotation notes. You can also capture a screenshot with annotations overlaid and download it as a PNG.
 
 **PRIVACY-FIRST, NO ACCOUNTS**
-a11y-annotator runs entirely in your browser. The battle-tested axe-core engine is bundled locally — no data is sent to external servers, no accounts needed, no tracking. Perfect for teams working on pre-launch products, NDA-covered projects, or anyone who wants full control over their accessibility workflow.
+a11y-annotator runs entirely in your browser. All processing is local — no data is sent to external servers, no accounts needed, no tracking. Perfect for teams working on pre-launch products, NDA-covered projects, or anyone who wants full control over their accessibility workflow.
 
 ## Key Features
 
@@ -30,30 +30,43 @@ a11y-annotator runs entirely in your browser. The battle-tested axe-core engine 
 - **Markdown export** — one-click report with URL, timestamp, issues, annotations, and selectors
 - **Screenshot capture** — download viewport with annotation overlays as PNG
 - **Keyboard shortcut** — Alt+A toggles the overlay on/off
-- **Zero dependencies, zero accounts** — all processing is local with bundled axe-core
+- **Zero dependencies, zero accounts** — all processing is local
 - **WCAG reference links** — every issue includes the relevant WCAG Success Criterion
 
-## Installation
+## Screenshot Descriptions
 
-1. Open Chrome and navigate to `chrome://extensions/`
-2. Enable **Developer mode** (toggle in the top-right corner)
-3. Click **Load unpacked**
-4. Select the `a11y-annotator/` folder
-5. The a11y-annotator icon appears in your toolbar
+1. **Hero screenshot** — Browser view showing a scanned webpage with color-coded annotation pins (red, yellow, blue) overlaid on problematic elements
+2. **Popup UI** — Extension popup showing scan results with error/warning/info counts and action buttons
+3. **Issue Dashboard** — Side panel displaying grouped accessibility issues with WCAG references
+4. **Annotation detail** — Close-up of a pinned annotation with a text note added by the user
+5. **Export report** — Sample Markdown report showing exported accessibility findings
 
-## Requirements
+## Category
+
+Developer Tools > Accessibility
+
+## Price
+
+- **Free tier**: All core scanning features, annotations, Markdown export, screenshot capture
+- **Pro upgrade**: $4.99/month — persistent annotations, team sharing, PDF export, scheduled audits, priority support
+
+## Privacy Policy Summary
+
+a11y-annotator does not collect, store, or transmit any user data. All scanning and processing happens locally in the browser. No accounts are required. No analytics or tracking code is included. The extension does not communicate with any external servers.
+
+## System Requirements
 
 - Chrome 88+ (Manifest V3 support)
 - No additional dependencies
 
 ## Support
 
-- **Contact:** eric@ericjoye.com
+- **Contact:** theoyax@gmail.com
 - **GitHub Issues:** https://github.com/ericjoye/a11y-annotator/issues
-- **Documentation:** See README.md in the extension folder
+- **Landing page:** https://a11y-annotator.dev
 
 ## Developer
 
-- **Developer:** Eric Joye
-- **Email:** eric@ericjoye.com
+- **Developer:** a11y-annotator
+- **Email:** theoyax@gmail.com
 - **License:** MIT

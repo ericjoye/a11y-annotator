@@ -8,6 +8,12 @@
   let annotations = {};
   let overlayActive = false;
   let scanId = 0;
+  window.__a11y_pro = false;
+
+  // Check Pro status on load
+  chrome.storage.local.get(['pro'], (result) => {
+    window.__a11y_pro = Boolean(result.pro);
+  });
 
   // WCAG reference map
   const WCAG_REFS = {
@@ -420,6 +426,214 @@
     }, 4000);
   }
 
+  // ─── Pro: CSV Export ───────────────────────────────────────
+
+  function exportCSV() {
+    const headers = ['Severity', 'Type', 'Message', 'WCAG SC', 'WCAG Level', 'WCAG Name', 'Element', 'Selector', 'URL', 'Annotation'];
+    const rows = issues.map(i => [
+      i.severity,
+      i.type,
+      `"${i.message.replace(/"/g, '""')}"`,
+      i.wcag.sc,
+      i.wcag.level,
+      `"${i.wcag.name.replace(/"/g, '""')}"`,
+      `<${i.element.tag}>`,
+      `"${(i.element.selector || '').replace(/"/g, '""')}"`,
+      window.location.href,
+      `"${(i.annotation || '').replace(/"/g, '""')}"`,
+    ]);
+
+    let csv = headers.join(',') + '\n';
+    rows.forEach(row => {
+      csv += row.join(',') + '\n';
+    });
+    return csv;
+  }
+
+  // ─── Pro: JSON Export ──────────────────────────────────────
+
+  function exportJSON() {
+    const data = {
+      url: window.location.href,
+      title: document.title,
+      scanned: new Date().toISOString(),
+      total: issues.length,
+      summary: {
+        errors: issues.filter(i => i.severity === 'error').length,
+        warnings: issues.filter(i => i.severity === 'warning').length,
+        info: issues.filter(i => i.severity === 'info').length,
+      },
+      issues: issues.map(i => ({
+        id: i.id,
+        severity: i.severity,
+        type: i.type,
+        message: i.message,
+        wcag: i.wcag,
+        element: {
+          tag: i.element.tag,
+          selector: i.element.selector,
+          text: i.element.text,
+        },
+        annotation: i.annotation || '',
+        position: i.position,
+      })),
+    };
+    return JSON.stringify(data, null, 2);
+  }
+
+  // ─── Pro: Batch Scan (same-origin links) ───────────────────
+
+  const PRO_BATCH_MAX_PAGES = 5; // Free tier gets single page; Pro gets up to 5
+
+  async function batchScan(maxPages = PRO_BATCH_MAX_PAGES) {
+    const results = [];
+    const visited = new Set();
+    const origin = window.location.origin;
+    const startUrl = window.location.href;
+
+    visited.add(startUrl);
+    const toVisit = [startUrl];
+
+    while (toVisit.length > 0 && visited.size <= maxPages) {
+      const url = toVisit.shift();
+      try {
+        const resp = await fetch(url, { mode: 'same-origin' });
+        const html = await resp.text();
+        const pageIssues = scanHTML(html, url);
+        results.push({ url, issues: pageIssues });
+        visited.add(url);
+
+        // Extract same-origin links
+        const parser = new DOMParser();
+        const doc = parser.parseFromString(html, 'text/html');
+        doc.querySelectorAll('a[href]').forEach(a => {
+          try {
+            const linkUrl = new URL(a.href, url);
+            if (linkUrl.origin === origin && !visited.has(linkUrl.href) && toVisit.length < maxPages) {
+              // Only follow links to HTML pages
+              if (!/\.(css|js|png|jpg|jpeg|gif|svg|woff|ttf|eot|mp4|pdf)$/i.test(linkUrl.pathname)) {
+                toVisit.push(linkUrl.href);
+              }
+            }
+          } catch (_) { /* invalid URL */ }
+        });
+      } catch (err) {
+        results.push({ url, issues: [], error: err.message });
+      }
+    }
+
+    return { pages: results, totalVisited: visited.size };
+  }
+
+  // Scan HTML string for issues (used by batch scan)
+  function scanHTML(html, pageUrl) {
+    const parser = new DOMParser();
+    const doc = parser.parseFromString(html, 'text/html');
+    const pageIssues = [];
+
+    // Run checks against the parsed document
+    doc.querySelectorAll('img:not([alt])').forEach(el => {
+      if (el.width <= 1 && el.height <= 1) return;
+      if (el.getAttribute('role') === 'presentation') return;
+      const wcag = WCAG_REFS['missing-alt'];
+      pageIssues.push({
+        id: `missing-alt-${pageIssues.length}`,
+        type: 'missing-alt',
+        severity: 'error',
+        message: 'Image missing alt text',
+        element: { tag: 'img', selector: getSelectorFromEl(el, doc), text: '' },
+        wcag,
+        annotation: '',
+      });
+    });
+
+    doc.querySelectorAll('input:not([type="hidden"]):not([type="submit"]):not([type="button"]):not([type="image"]), select, textarea').forEach(el => {
+      const id = el.id;
+      const ariaLabel = el.getAttribute('aria-label');
+      const ariaLabelledBy = el.getAttribute('aria-labelledby');
+      const placeholder = el.getAttribute('placeholder');
+      const title = el.getAttribute('title');
+      const hasLabel = id && doc.querySelector(`label[for="${id}"]`);
+      const wrappedInLabel = el.closest('label');
+      if (!hasLabel && !wrappedInLabel && !ariaLabel && !ariaLabelledBy && !placeholder && !title) {
+        const wcag = WCAG_REFS['missing-label'];
+        pageIssues.push({
+          id: `missing-label-${pageIssues.length}`,
+          type: 'missing-label',
+          severity: 'error',
+          message: 'Form field missing label',
+          element: { tag: el.tagName.toLowerCase(), selector: getSelectorFromEl(el, doc), text: '' },
+          wcag,
+          annotation: '',
+        });
+      }
+    });
+
+    doc.querySelectorAll('a').forEach(el => {
+      const text = el.textContent.trim();
+      const ariaLabel = el.getAttribute('aria-label');
+      const imgAlt = el.querySelector('img[alt]')?.getAttribute('alt');
+      if (!text && !ariaLabel && !imgAlt) {
+        const wcag = WCAG_REFS['empty-link'];
+        pageIssues.push({
+          id: `empty-link-${pageIssues.length}`,
+          type: 'empty-link',
+          severity: 'error',
+          message: 'Link has no accessible text',
+          element: { tag: 'a', selector: getSelectorFromEl(el, doc), text: '' },
+          wcag,
+          annotation: '',
+        });
+      }
+    });
+
+    const htmlEl = doc.documentElement;
+    if (!htmlEl.getAttribute('lang')) {
+      const wcag = WCAG_REFS['missing-lang'];
+      pageIssues.push({
+        id: `missing-lang-${pageIssues.length}`,
+        type: 'missing-lang',
+        severity: 'error',
+        message: 'Page missing lang attribute',
+        element: { tag: 'html', selector: 'html', text: '' },
+        wcag,
+        annotation: '',
+      });
+    }
+
+    if (!doc.title || !doc.title.trim()) {
+      const wcag = WCAG_REFS['missing-title'];
+      pageIssues.push({
+        id: `missing-title-${pageIssues.length}`,
+        type: 'missing-title',
+        severity: 'error',
+        message: 'Page missing <title>',
+        element: { tag: 'html', selector: 'html', text: '' },
+        wcag,
+        annotation: '',
+      });
+    }
+
+    return pageIssues;
+  }
+
+  function getSelectorFromEl(el, doc) {
+    if (el.id) return `#${el.id}`;
+    const parts = [];
+    let current = el;
+    while (current && current !== doc.body) {
+      let sel = current.tagName.toLowerCase();
+      if (current.className && typeof current.className === 'string') {
+        const classes = current.className.trim().split(/\s+/).slice(0, 2);
+        sel += classes.map(c => `.${c}`).join('');
+      }
+      parts.unshift(sel);
+      current = current.parentElement;
+      if (parts.length >= 3) break;
+    }
+    return parts.join(' > ');
+  }
+
   // ─── Export ────────────────────────────────────────────────
 
   function exportMarkdown() {
@@ -513,11 +727,52 @@
         sendResponse({ markdown: md });
         break;
 
+      case 'export-csv':
+        // Pro only
+        if (!window.__a11y_pro) {
+          sendResponse({ error: 'Pro license required' });
+          break;
+        }
+        sendResponse({ csv: exportCSV() });
+        break;
+
+      case 'export-json':
+        // Pro only
+        if (!window.__a11y_pro) {
+          sendResponse({ error: 'Pro license required' });
+          break;
+        }
+        sendResponse({ json: exportJSON() });
+        break;
+
+      case 'batch-scan':
+        // Pro only — same-origin crawl
+        if (!window.__a11y_pro) {
+          sendResponse({ error: 'Pro license required' });
+          break;
+        }
+        const limit = message.limit || PRO_BATCH_MAX_PAGES;
+        batchScan(limit).then(result => {
+          sendResponse(result);
+        });
+        return true; // async
+
       case 'save-annotation':
         annotations[message.issueId] = message.note;
         const issue = issues.find(i => i.id === message.issueId);
         if (issue) issue.annotation = message.note;
         sendResponse({ ok: true });
+        break;
+
+      case 'screenshot':
+        // Return current page data for screenshot composition
+        sendResponse({
+          ok: true,
+          url: window.location.href,
+          title: document.title,
+          issues: issues.length,
+          overlayActive: overlayActive,
+        });
         break;
 
       default:

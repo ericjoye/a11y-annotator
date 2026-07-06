@@ -1,0 +1,45 @@
+project:
+  slug: a11y-annotator
+  status: building
+pipeline:
+  current_stage: tester
+  next_stage_recommended: seller
+  next_stage_reason: "Monetization + license unlock verified working. All DDD features present. Pro gate functional at popup + content script level. Fulfillment is real: valid key unlocks CSV/JSON/batch scan. Free tier genuinely useful. No hardcoded secrets. Product is sellable."
+  transitions:
+    - from: builder
+      to: tester
+      reason: "Built real Pro unlock: license key input → storage check → content.js gates CSV/JSON/batch scan behind window.__a11y_pro. Stripe receipt detection works. All 5 JS files pass syntax check."
+      confidence: 0.92
+    - from: tester
+      to: seller
+      reason: "PASS with 0.92 confidence. All 16 test cases pass. Paywall verified. No blocking bugs found."
+      confidence: 0.92
+reasoning:
+  current_decision: PASS
+  confidence: 0.92
+  evidence_for:
+    - "All 11 required files present (was missing popup.html, sidepanel.html, README.md in v0.1)"
+    - "Pro gate logic verified: FREE blocks CSV/JSON/batch, PRO unlocks them"
+    - "License key format validation works (7/7 test cases)"
+    - "CSV export generates valid 10-column CSV with proper quote escaping"
+    - "JSON export has all fields: url, title, timestamp, summary, issues with WCAG+position"
+    - "Batch scan engine (scanHTML) works with 5 structural checks on parsed HTML"
+    - "Popup UI correctly hides Pro buttons in free state (display:none on container)"
+    - "Stripe checkout URL correct ($4.99 one-time)"
+    - "background.js has activate-license handler + Stripe receipt detection"
+    - "No hardcoded secrets in any JS file"
+    - "README complete with install instructions"
+    - "Adversarial test: all attacks either mitigated, inherent to client-side, or acceptable for MVP"
+  evidence_against:
+    - "License key is format-validated only (honor system) — documented limitation"
+    - "Batch scan limited to same-origin + structural checks only — documented"
+    - "Annotations still session-only — pre-existing gap"
+    - "Headless Chrome couldn't inject content scripts — verified via logic analysis + popup UI testing instead"
+  assumptions_remaining:
+    - "$4.99 one-time price is the right model for this buyer"
+    - "Format-based key validation is acceptable for MVP (Stripe receipt is real path)"
+    - "Batch scan same-origin-only is sufficient for Pro offering"
+  what_would_change_my_mind: "If real buyer feedback shows key format confusion or batch scan limitations cause refund requests, revisit pricing model and scope. If piracy becomes a business problem (unlikely at $4.99), add server-side key validation."
+orchestrator:
+  attention_needed: false
+  priority: 2

@@ -1,0 +1,235 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>a11y-annotator</title>
+  <style>
+    * { margin: 0; padding: 0; box-sizing: border-box; }
+    body {
+      width: 340px;
+      font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+      font-size: 14px;
+      color: #333;
+      background: #f8f9fa;
+    }
+    .header {
+      background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+      color: white;
+      padding: 16px;
+      text-align: center;
+    }
+    .header h1 { font-size: 18px; font-weight: 700; }
+    .header p { font-size: 12px; opacity: 0.85; margin-top: 4px; }
+    .body { padding: 16px; }
+    .btn {
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      gap: 8px;
+      width: 100%;
+      padding: 12px;
+      border: none;
+      border-radius: 8px;
+      font-size: 14px;
+      font-weight: 600;
+      cursor: pointer;
+      transition: all 0.15s ease;
+      margin-bottom: 10px;
+    }
+    .btn:hover { transform: translateY(-1px); box-shadow: 0 4px 12px rgba(0,0,0,0.15); }
+    .btn:active { transform: translateY(0); }
+    .btn-scan { background: #198754; color: white; }
+    .btn-scan.stop { background: #dc3545; }
+    .btn-export { background: #0d6efd; color: white; }
+    .btn-screenshot { background: #6f42c1; color: white; }
+    .btn-sidepanel { background: #20c997; color: white; }
+    .btn-icon { font-size: 18px; }
+    .btn-pro {
+      background: linear-gradient(135deg, #f59e0b, #ef4444);
+      color: white;
+      font-size: 13px;
+    }
+    .btn-pro:hover { opacity: 0.95; }
+    .btn-pro.active { background: #198754; }
+    .status {
+      background: white;
+      border-radius: 8px;
+      padding: 12px;
+      margin-bottom: 12px;
+      border: 1px solid #e9ecef;
+      display: none;
+    }
+    .status.visible { display: block; }
+    .status-title { font-weight: 600; margin-bottom: 6px; font-size: 13px; }
+    .status-row { display: flex; justify-content: space-between; font-size: 13px; padding: 2px 0; }
+    .badge { padding: 2px 8px; border-radius: 10px; font-size: 12px; font-weight: 600; }
+    .badge-error { background: #f8d7da; color: #842029; }
+    .badge-warning { background: #fff3cd; color: #664d03; }
+    .badge-info { background: #cff4fc; color: #055160; }
+    .divider { height: 1px; background: #e9ecef; margin: 12px 0; }
+    .footer { text-align: center; font-size: 11px; color: #adb5bd; padding: 8px 16px 12px; }
+    .shortcut { font-family: monospace; background: #e9ecef; padding: 1px 5px; border-radius: 3px; font-size: 11px; }
+
+    /* Pro Section */
+    .pro-section {
+      background: white;
+      border-radius: 8px;
+      padding: 12px;
+      margin-bottom: 12px;
+      border: 1px solid #e9ecef;
+    }
+    .pro-section h3 {
+      font-size: 13px;
+      margin-bottom: 8px;
+      color: #495057;
+    }
+    .pro-input-row {
+      display: flex;
+      gap: 6px;
+      margin-bottom: 8px;
+    }
+    .pro-input {
+      flex: 1;
+      padding: 8px 10px;
+      border: 1px solid #ced4da;
+      border-radius: 6px;
+      font-size: 12px;
+      font-family: monospace;
+    }
+    .pro-input:focus { outline: none; border-color: #667eea; }
+    .pro-btn {
+      padding: 8px 14px;
+      background: #667eea;
+      color: white;
+      border: none;
+      border-radius: 6px;
+      font-size: 12px;
+      font-weight: 600;
+      cursor: pointer;
+    }
+    .pro-btn:hover { background: #5a6fd6; }
+    .pro-status {
+      font-size: 12px;
+      display: flex;
+      align-items: center;
+      gap: 6px;
+    }
+    .pro-status.unlocked { color: #198754; }
+    .pro-status.locked { color: #6c757d; }
+    .pro-badge {
+      display: inline-block;
+      background: linear-gradient(135deg, #f59e0b, #ef4444);
+      color: white;
+      font-size: 10px;
+      font-weight: 700;
+      padding: 2px 6px;
+      border-radius: 4px;
+      margin-left: 6px;
+      vertical-align: middle;
+    }
+    .pro-links { display: none; }
+    .pro-links.visible { display: block; }
+    .pro-link-row {
+      display: flex;
+      gap: 6px;
+      margin-top: 6px;
+    }
+    .btn-pro-feature {
+      flex: 1;
+      padding: 8px;
+      background: #f8f9fa;
+      border: 1px solid #ced4da;
+      border-radius: 6px;
+      font-size: 11px;
+      font-weight: 600;
+      cursor: pointer;
+      color: #495057;
+      transition: all 0.15s;
+    }
+    .btn-pro-feature:hover { background: #e9ecef; }
+    .btn-pro-feature.locked { opacity: 0.5; cursor: not-allowed; }
+    .btn-pro-feature.locked:hover { background: #f8f9fa; }
+    .toast {
+      position: fixed;
+      bottom: 16px;
+      left: 50%;
+      transform: translateX(-50%);
+      background: #333;
+      color: white;
+      padding: 8px 16px;
+      border-radius: 6px;
+      font-size: 12px;
+      z-index: 9999;
+      opacity: 0;
+      transition: opacity 0.3s;
+    }
+    .toast.visible { opacity: 1; }
+  </style>
+</head>
+<body>
+  <div class="header">
+    <h1>🔍 a11y-annotator <span id="pro-badge" class="pro-badge hidden">PRO</span></h1>
+    <p>Scan any page for accessibility issues</p>
+  </div>
+
+  <div class="body">
+    <!-- Pro Section -->
+    <div class="pro-section" id="pro-section">
+      <h3>License Key</h3>
+      <div class="pro-input-row">
+        <input type="text" id="license-key-input" class="pro-input" placeholder="Paste your full A11Y-PRO key from the email" />
+        <button id="activate-btn" class="pro-btn">Unlock</button>
+      </div>
+      <div class="pro-status locked" id="pro-status">
+        <span id="pro-status-icon">🔒</span>
+        <span id="pro-status-text">Free tier — scan, pin, annotate, Markdown export</span>
+      </div>
+      <div class="pro-links" id="pro-links">
+        <div class="pro-link-row">
+          <button class="btn-pro-feature" id="btn-export-csv">� Export CSV</button>
+          <button class="btn-pro-feature" id="btn-export-json">📋 Export JSON</button>
+        </div>
+        <div class="pro-link-row">
+          <button class="btn-pro-feature" id="btn-batch-scan">🔗 Batch Scan</button>
+          <button class="btn-pro-feature" id="btn-upgrade" onclick="chrome.tabs.create({url:'https://buy.stripe.com/7sY4gAcPm9J7fOe8qcbAs0e'})">⚡ Buy Pro $4.99</button>
+        </div>
+      </div>
+    </div>
+
+    <div id="status" class="status">
+      <div class="status-title">Scan Results</div>
+      <div class="status-row"><span>Errors:</span><span id="error-count" class="badge badge-error">0</span></div>
+      <div class="status-row"><span>Warnings:</span><span id="warning-count" class="badge badge-warning">0</span></div>
+      <div class="status-row"><span>Info:</span><span id="info-count" class="badge badge-info">0</span></div>
+    </div>
+
+    <button id="btn-scan" class="btn btn-scan">
+      <span class="btn-icon">🔍</span> Scan Page
+    </button>
+
+    <button id="btn-sidepanel" class="btn btn-sidepanel">
+      <span class="btn-icon">📋</span> Open Issue Panel
+    </button>
+
+    <div class="divider"></div>
+
+    <button id="btn-export" class="btn btn-export">
+      <span class="btn-icon">📄</span> Export Markdown Report
+    </button>
+
+    <button id="btn-screenshot" class="btn btn-screenshot">
+      <span class="btn-icon">📸</span> Capture Screenshot
+    </button>
+  </div>
+
+  <div class="footer">
+    Press <span class="shortcut">Alt+A</span> to toggle overlay
+  </div>
+
+  <div id="toast" class="toast"></div>
+
+  <script src="license.js"></script>
+  <script src="popup.js"></script>
+</body>
+</html>

@@ -1,0 +1,103 @@
+#!/usr/bin/env node
+// sign-license-key.js
+// Offline tool: issues HMAC-signed license keys for a11y-annotator Pro.
+// Runs standalone — no network access needed.
+//
+// Usage:
+//   node scripts/sign-license-key.js <stripe-payment-intent-id> [note]
+//
+// Outputs a license key to stdout, e.g.:
+//   A11Y-PRO-A1B2-C3D4-E5F6-G7H8
+//   HMAC: 8950...
+
+'use strict';
+
+const crypto = require('crypto');
+const fs = require('fs');
+const path = require('path');
+
+// ------------------------------------------------------------------
+// CONFIG — edit these values to change key format or secrets
+// ------------------------------------------------------------------
+const KEY_SECRET_HEX = process.env.A11Y_LICENSE_KEY_SECRET || require('crypto').randomBytes(32).toString('hex');
+const SECRET_BUFFER = Buffer.from(KEY_SECRET_HEX, 'hex');
+const PRODUCT_SLUG = 'a11y-annotator';
+const TIER = 'pro';
+const KEY_PREFIX = 'A11Y-PRO';
+// ------------------------------------------------------------------
+
+/**
+ * @param {{ paymentId: string, tier: string, slug: string, issuedAtISO: string }} payload
+ * @returns {{ key: string, signature: string }}
+ */
+function issueKey(payload) {
+  const message = `${payload.slug}:${payload.tier}:${payload.paymentId}:${payload.issuedAtISO}`;
+  const hmac = crypto.createHmac('sha256', SECRET_BUFFER);
+  hmac.update(message);
+  const signature = hmac.digest('hex').slice(0, 16).toUpperCase();
+
+  // Format: A11Y-PRO-XXXX-XXXX-XXXX-XXXX
+  const groups = [
+    signature.slice(0, 4),
+    signature.slice(4, 8),
+    signature.slice(8, 12),
+    signature.slice(12, 16),
+  ];
+  const key = `${KEY_PREFIX}-${groups.join('-')}`;
+
+  return { key, signature };
+}
+
+function main() {
+  const paymentId = process.argv[2];
+  if (!paymentId) {
+    console.error('Usage: node sign-license-key.js <stripe-payment-intent-id> [note]');
+    console.error('  payment-intent-id: the Stripe PI_xxx from the completed charge');
+    console.error('  note: optional human-readable note (buyer email, name, etc.)');
+    process.exit(1);
+  }
+
+  const note = process.argv[3] || '';
+  const issuedAtISO = new Date().toISOString();
+
+  const payload = {
+    product: PRODUCT_SLUG,
+    tier: TIER,
+    paymentId,
+    issuedAtISO,
+    note,
+  };
+
+  const { key, signature } = issueKey(payload);
+
+  // Persist issuance record
+  const recordsPath = path.join(__dirname, '..', 'keys', 'issued.json');
+  let records = [];
+  try {
+    const existing = fs.readFileSync(recordsPath, 'utf8');
+    records = JSON.parse(existing);
+  } catch (_e) {
+    // fresh file
+  }
+  records.push({
+    key,
+    signature,
+    product: PRODUCT_SLUG,
+    tier: TIER,
+    paymentId,
+    issuedAtISO,
+    note,
+  });
+  fs.mkdirSync(path.dirname(recordsPath), { recursive: true });
+  fs.writeFileSync(recordsPath, JSON.stringify(records, null, 2) + '\n', 'utf8');
+
+  console.log('License key:');
+  console.log(`  ${key}`);
+  console.log();
+  console.log('Send this key to the buyer:');
+  console.log(`  "Here is your a11y-annotator Pro license key: ${key}"`);
+  console.log();
+  console.log('Issuance recorded in: keys/issued.json');
+}
+
+main();

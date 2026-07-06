@@ -7,7 +7,8 @@
     "activeTab",
     "sidePanel",
     "storage",
-    "scripting"
+    "scripting",
+    "tabs"
   ],
   "host_permissions": [
     "<all_urls>"
@@ -19,7 +20,7 @@
   "content_scripts": [
     {
       "matches": ["<all_urls>"],
-      "js": ["content.js"],
+      "js": ["license.js", "content.js"],
       "css": ["content.css"],
       "run_at": "document_idle"
     }
@@ -33,7 +34,15 @@
     }
   },
   "side_panel": {
-    "default_panel": "sidepanel.html"
+    "default_path": "sidepanel.html"
+  },
+  "commands": {
+    "toggle-overlay": {
+      "suggested_key": {
+        "default": "Alt+A"
+      },
+      "description": "Toggle annotation overlay"
+    }
   },
   "icons": {
     "16": "icons/icon16.png",

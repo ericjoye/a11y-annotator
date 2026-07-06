@@ -1,0 +1,9 @@
+// === AUTO-GENERATED — run: node scripts/generate-license-key-artifacts.mjs ===
+// DO NOT CHANGE while any license key is outstanding.
+export const LICENSE_TOKENS = Object.freeze({
+  PRODUCT_SLUG: "a11y-annotator",
+  TIER: "pro",
+  SEPARATOR: "A1Y-SEP",
+  PAYLOAD_B64: "YTExeS1hbm5vdGF0b3JBMVktU0VQcHJvQTFZLVNFUHBpX3Rlc3RfMDAwMDAwMDBBMVktU0VQMjAyNi0wNy0wMVQxMDoxNjozMC40MTBa",
+  PUBLIC_KEY_PEM_B64: "MFkwEwYHKoZIzj0CAQYIKoZIzj0DAQcDQgAEIrcfnvbvHRITxKMBRC0rm1FWEnduDB9ZUW2/5Hi4j3XQvfhmkD7E8x9eEeJjeH7TvT6EIdLcDuZxtOKKRZojng==",
+});

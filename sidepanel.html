@@ -1,0 +1,60 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>a11y-annotator — Issues</title>
+  <link rel="stylesheet" href="sidepanel.css">
+</head>
+<body>
+  <div class="header">
+    <h1>🔍 a11y-annotator</h1>
+    <div class="header-subtitle" id="page-title">No page scanned yet</div>
+  </div>
+
+  <div class="summary-bar" id="summary-bar">
+    <div class="summary-item summary-errors">
+      <span class="summary-count" id="summary-errors">0</span>
+      <span class="summary-label">Errors</span>
+    </div>
+    <div class="summary-item summary-warnings">
+      <span class="summary-count" id="summary-warnings">0</span>
+      <span class="summary-label">Warnings</span>
+    </div>
+    <div class="summary-item summary-infos">
+      <span class="summary-count" id="summary-infos">0</span>
+      <span class="summary-label">Info</span>
+    </div>
+  </div>
+
+  <div class="toolbar">
+    <button id="btn-scan" class="btn btn-primary">🔍 Scan</button>
+    <button id="btn-export" class="btn btn-secondary">📄 Export</button>
+    <button id="btn-clear" class="btn btn-danger">✕ Clear</button>
+  </div>
+
+  <div class="filter-bar">
+    <button class="filter-btn active" data-filter="all">All</button>
+    <button class="filter-btn" data-filter="error">🔴 Errors</button>
+    <button class="filter-btn" data-filter="warning">🟡 Warnings</button>
+    <button class="filter-btn" data-filter="info">🔵 Info</button>
+  </div>
+
+  <div class="search-bar">
+    <input type="text" id="search-input" placeholder="Filter issues by keyword..." />
+  </div>
+
+  <div id="issues-container" class="issues-container">
+    <div class="empty-state" id="empty-state">
+      <div class="empty-icon">🔍</div>
+      <div class="empty-text">Click "Scan" to check this page for accessibility issues</div>
+    </div>
+  </div>
+
+  <div class="footer">
+    <span id="issue-count">0 issues</span>
+  </div>
+
+  <script src="sidepanel.js"></script>
+</body>
+</html>

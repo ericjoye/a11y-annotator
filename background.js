@@ -1,38 +1,48 @@
 // background.js — Service worker for a11y-annotator
 
-// Handle extension icon click
-chrome.action.onClicked.addListener(async (tab) => {
-  try {
-    await chrome.scripting.executeScript({
-      target: { tabId: tab.id },
-      func: () => {
-        // Toggle overlay
-        if (window.__a11y_annotator_active) {
-          window.__a11y_annotator_active = false;
-          document.querySelectorAll('.a11y-pin, .a11y-overlay').forEach(el => el.remove());
-        } else {
-          // Trigger scan via content script
-          window.dispatchEvent(new CustomEvent('a11y-scan-request'));
-        }
-      }
-    });
-  } catch (err) {
-    console.error('a11y-annotator: Failed to toggle', err);
-  }
-});
-
-// Listen for messages from content scripts / popup
+// Listen for messages from content scripts / popup / sidepanel
 chrome.runtime.onMessage.addListener((message, sender, sendResponse) => {
+  // Open side panel
   if (message.type === 'open_sidepanel') {
-    chrome.sidePanel.open({ windowId: sender.tab.windowId });
+    if (sender.tab && sender.tab.windowId) {
+      chrome.sidePanel.open({ windowId: sender.tab.windowId });
+    }
     sendResponse({ ok: true });
+    return false;
   }
-  if (message.type === 'get_tab_info') {
+
+  // Get tab info
+  if (message.type === 'get_tab_info' && sender.tab) {
     chrome.tabs.get(sender.tab.id, (tab) => {
       sendResponse({ url: tab.url, title: tab.title });
     });
     return true; // async response
   }
+
+  // Forward scan-complete to side panel
+  if (message.type === 'scan-complete' && sender.tab) {
+    // The side panel listens for runtime messages directly — no forwarding needed
+    sendResponse({ ok: true });
+    return false;
+  }
+
+  // Pro unlock via explicit activation from the extension only.
+  // NO auto-unlock by inspecting browser URLs — that path is removed.
+  if (message.type === 'unlock-pro') {
+    chrome.storage.local.set({ pro: true }, () => {
+      sendResponse({ ok: true });
+    });
+    return true; // async response
+  }
+
+  // License key activation — delegates verification to license.js in popup. Use cached result.
+  if (message.type === 'activate-license') {
+    chrome.storage.local.set({ pro: true, licenseKey: message.key }, () => {
+      sendResponse({ ok: true });
+    });
+    return true; // async
+  }
+
   return false;
 });
 
