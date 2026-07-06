@@ -211,7 +211,7 @@ Check it out: https://ericjoye.github.io/hermes-dashboard/landings/a11y-annotato
 
 ## 7. Chrome Web Store Submission Checklist
 
-- [ ] Extension packaged as .zip (already at `/home/ericjoye/businesses/a11y-annotator/a11y-annotator.zip`)
+- [ ] Extension packaged as .zip (already at `a11y-annotator.zip (repo root)`)
 - [ ] Chrome Web Store developer account ($5 one-time fee)
 - [ ] Store listing copy (see `store-listing.md`)
 - [ ] Screenshots (5 required):
