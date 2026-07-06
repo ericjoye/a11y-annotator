@@ -53,4 +53,4 @@ We may update this privacy policy from time to time. Any changes will be reflect
 
 ## Contact
 
-If you have questions about this privacy policy, contact us at: theoyax@gmail.com
+If you have questions about this privacy policy, contact us at: [SUPPORT-EMAIL-PENDING — Eric to supply before public launch]

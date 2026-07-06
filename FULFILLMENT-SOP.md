@@ -20,7 +20,7 @@ Operator: Eric only (the signing key is offline-only, on this machine). Target: 
    node scripts/sign-license-key.js <pi_id> "<buyer email>"
    ```
    This prints the key (`A11Y-PRO-XXXX-XXXX-XXXX-XXXX`) and appends a record to `keys/issued.json` (key, signature, payment id, buyer note, timestamp).
-4. **Send the email.** Copy `keys/EMAIL-TEMPLATE.md`, fill `{{KEY}}`, `{{BUYER_EMAIL}}`, `{{PAYMENT_ID}}`, send from theoyax@gmail.com.
+4. **Send the email.** Copy `keys/EMAIL-TEMPLATE.md`, fill `{{KEY}}`, `{{BUYER_EMAIL}}`, `{{PAYMENT_ID}}`, send from [SUPPORT-EMAIL-PENDING — Eric to supply before public launch].
 5. **Mark fulfilled.** Append one line to `keys/FULFILLED.log`:
    ```
    2026-07-02 | pi_xxx | buyer@example.com | A11Y-PRO-XXXX-XXXX-XXXX-XXXX
