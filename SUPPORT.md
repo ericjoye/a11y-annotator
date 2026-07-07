@@ -2,7 +2,7 @@
 
 ## How to reach us
 
-Email **[SUPPORT-EMAIL-PENDING — Eric to supply before public launch]**. This is a one-person product — there's no ticket system, no chat widget, just a real inbox. Response time: **24-48 hours**, usually faster.
+Email **support@ericjoye.com**. This is a one-person product — there's no ticket system, no chat widget, just a real inbox. Response time: **24-48 hours**, usually faster.
 
 When you write in, include:
 - What you were trying to do
@@ -12,7 +12,7 @@ When you write in, include:
 ## Lost or missing key
 
 If you paid and never got a key, or lost the email:
-1. Email [SUPPORT-EMAIL-PENDING — Eric to supply before public launch] with your Stripe payment confirmation (receipt email or the last 4 of the card, plus approximate date/time of purchase).
+1. Email support@ericjoye.com with your Stripe payment confirmation (receipt email or the last 4 of the card, plus approximate date/time of purchase).
 2. We look up the payment intent id in the Stripe dashboard, then check `keys/issued.json` for a matching record.
 3. If found: we resend the existing key — no new charge.
 4. If not found (first-time lookup): we re-run `node scripts/sign-license-key.js <payment_intent_id> "<email>"` to issue a fresh key tied to that same payment, log it, and send it.
@@ -21,7 +21,7 @@ Reissue turnaround: same as general support, 24-48 hours.
 
 ## Refunds
 
-**14 days, no questions asked.** Request a refund via the Stripe receipt link in your confirmation email, or email [SUPPORT-EMAIL-PENDING — Eric to supply before public launch] and we'll refund from the Stripe dashboard directly. See `REFUNDS.md` for the full policy text.
+**14 days, no questions asked.** Request a refund via the Stripe receipt link in your confirmation email, or email support@ericjoye.com and we'll refund from the Stripe dashboard directly. See `REFUNDS.md` for the full policy text.
 
 ## Known limitations (read before buying if this matters to you)
 

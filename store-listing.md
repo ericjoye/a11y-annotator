@@ -61,12 +61,12 @@ a11y-annotator does not collect, store, or transmit any user data. All scanning 
 
 ## Support
 
-- **Contact:** [SUPPORT-EMAIL-PENDING — Eric to supply before public launch]
+- **Contact:** support@ericjoye.com
 - **GitHub Issues:** https://github.com/ericjoye/a11y-annotator/issues
 - **Landing page:** https://a11y-annotator.dev
 
 ## Developer
 
 - **Developer:** a11y-annotator
-- **Email:** [SUPPORT-EMAIL-PENDING — Eric to supply before public launch]
+- **Email:** support@ericjoye.com
 - **License:** MIT
