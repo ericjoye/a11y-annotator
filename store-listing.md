@@ -48,7 +48,7 @@ Developer Tools > Accessibility
 ## Price
 
 - **Free tier**: All core scanning features, annotations, Markdown export, screenshot capture
-- **Pro upgrade**: $4.99/month — persistent annotations, team sharing, PDF export, scheduled audits, priority support
+- **Pro upgrade**: $4.99 one-time — persistent annotations, PDF export, priority support
 
 ## Privacy Policy Summary
 

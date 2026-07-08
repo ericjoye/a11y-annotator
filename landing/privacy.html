@@ -1,0 +1,76 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Privacy Policy — a11y-annotator</title>
+<style>
+  :root { --bg: #09090b; --surface: #18181b; --border: #3f3f46; --text: #fafafa; --text-muted: #a1a1aa; --primary: #4A90D9; }
+  *, *::before, *::after { margin: 0; padding: 0; box-sizing: border-box; }
+  body { font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif; background: var(--bg); color: var(--text); line-height: 1.7; padding: 40px 24px; }
+  .container { max-width: 720px; margin: 0 auto; }
+  h1 { font-size: 2rem; font-weight: 700; margin-bottom: 8px; }
+  h2 { font-size: 1.3rem; font-weight: 600; margin: 32px 0 12px; color: var(--primary); }
+  h3 { font-size: 1.1rem; font-weight: 600; margin: 24px 0 8px; }
+  p { margin-bottom: 16px; color: var(--text-muted); }
+  ul { margin: 0 0 16px 24px; color: var(--text-muted); }
+  li { margin-bottom: 6px; }
+  strong { color: var(--text); }
+  .muted { color: var(--text-muted); font-size: 0.9rem; margin-bottom: 32px; }
+  a { color: var(--primary); }
+</style>
+</head>
+<body>
+<div class="container">
+  <h1>Privacy Policy</h1>
+  <p class="muted">Last updated: July 7, 2026</p>
+
+  <h2>Overview</h2>
+  <p>a11y-annotator ("we", "our", "the extension") is a Chrome extension that scans web pages for accessibility issues, lets you annotate them visually, and exports shareable reports. We are committed to protecting your privacy.</p>
+
+  <h2>Data Collection</h2>
+  <p><strong>a11y-annotator does NOT collect, store, or transmit any personal data.</strong></p>
+  <p>All scanning, analysis, and annotation happens locally in your browser. When you use a11y-annotator:</p>
+  <ul>
+    <li><strong>No data is sent to external servers.</strong> Accessibility scans are performed entirely within your browser using built-in JavaScript. Nothing is uploaded anywhere.</li>
+    <li><strong>No tracking or analytics.</strong> We do not use Google Analytics, Mixpanel, or any other tracking service.</li>
+    <li><strong>No cookies.</strong> a11y-annotator does not set or read any cookies.</li>
+    <li><strong>No account required.</strong> There is no signup, login, or user account system.</li>
+  </ul>
+
+  <h2>Local Storage</h2>
+  <p>The only data stored by a11y-annotator is kept locally in your browser using Chrome's <code>chrome.storage</code> API:</p>
+  <ul>
+    <li><strong>Annotation notes</strong> — Text notes you attach to accessibility issues. These persist only for the current browser session.</li>
+    <li><strong>Overlay visibility state</strong> — Whether the annotation overlay is shown or hidden.</li>
+    <li><strong>License key</strong> — If you purchase Pro, your license key is stored locally to verify your Pro status offline.</li>
+  </ul>
+  <p>This data never leaves your device.</p>
+
+  <h2>Permissions</h2>
+  <p>a11y-annotator requests the following Chrome permissions:</p>
+  <ul>
+    <li><strong>activeTab</strong> — To access the currently active tab when you click the extension icon.</li>
+    <li><strong>scripting</strong> — To inject content scripts that perform accessibility analysis.</li>
+    <li><strong>storage</strong> — To store annotation notes and UI state locally.</li>
+    <li><strong>sidePanel</strong> — To display the issue dashboard in Chrome's side panel.</li>
+    <li><strong>tabs</strong> — To read the active tab's URL for display in reports.</li>
+  </ul>
+
+  <h2>Host Permissions</h2>
+  <p>a11y-annotator requests <code>&lt;all_urls&gt;</code> access because it needs to scan any webpage you choose for accessibility issues. This permission is used solely for local analysis — no data is transmitted externally.</p>
+
+  <h2>Single Purpose</h2>
+  <p>a11y-annotator's single purpose is to scan web pages for WCAG accessibility issues, allow users to annotate them with visual markers, and export reports of the findings. All processing is performed locally in the browser.</p>
+
+  <h2>Third-Party Services</h2>
+  <p>a11y-annotator integrates with <strong>Stripe</strong> for Pro tier payments. When you click an upgrade button, you are redirected to Stripe's hosted checkout page. Stripe's own privacy policy applies to that transaction.</p>
+
+  <h2>Changes to This Policy</h2>
+  <p>We may update this privacy policy from time to time. Any changes will be reflected in the extension's listing on the Chrome Web Store.</p>
+
+  <h2>Contact</h2>
+  <p>If you have questions, contact us at: <a href="mailto:support@ericjoye.com">support@ericjoye.com</a></p>
+</div>
+</body>
+</html>
