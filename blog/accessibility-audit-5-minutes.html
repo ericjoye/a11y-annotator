@@ -1,0 +1,58 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <title>How to Audit Your Website for Accessibility in 5 Minutes</title>
+  <meta name="description" content="How to Audit Your Website for Accessibility in 5 Minutes">
+  <meta name="keywords" content="a11y, accessibility, wcag, chrome extension, web accessibility">
+  <meta property="og:title" content="How to Audit Your Website for Accessibility in 5 Minutes">
+  <meta property="og:type" content="article">
+  <meta property="og:url" content="https://a11y-annotator.vercel.app">
+  <style>
+    body { font-family: -apple-system, system-ui, sans-serif; max-width: 720px; margin: 0 auto; padding: 20px; background: #0d1117; color: #c9d1d9; line-height: 1.6; }
+    article { margin: 40px 0; }
+    h1, h2, h3 { color: #58a6ff; }
+    .meta { color: #8b949e; font-size: 0.9em; margin-bottom: 24px; }
+    .cta-box { background: #161b22; border: 1px solid #30363d; border-radius: 8px; padding: 24px; margin: 32px 0; text-align: center; }
+    .cta-box h3 { margin-top: 0; }
+    .cta-box a { display: inline-block; background: #238636; color: white; padding: 10px 24px; border-radius: 6px; text-decoration: none; font-weight: 600; margin-top: 12px; }
+    .cta-box a:hover { background: #2ea043; }
+    code { background: #161b22; padding: 2px 6px; border-radius: 4px; font-size: 0.9em; }
+    pre { background: #161b22; padding: 16px; border-radius: 8px; overflow-x: auto; }
+    img { max-width: 100%; border-radius: 6px; }
+  </style>
+</head>
+<body>
+  <article>
+    <h1>How to Audit Your Website for Accessibility in 5 Minutes</h1>
+    <div class="meta">July 08, 2026 · 4 min read</div>
+    
+    <p>Most frontend developers know they <em>should</em> check accessibility. Most don't — not because they don't care, but because the tooling friction is too high. Here's a 5-minute workflow that catches the most common issues.</p>
+    
+    <h2>Step 1: Install a Local Checker</h2>
+    <p>The biggest mistake is relying on online scanners. They test one URL at a time, miss dynamic content, and can't evaluate interactions that require user input. You need something that runs <em>in</em> the browser you're developing in.</p>
+    <p>a11y-annotator ($4.99 one-time) installs as a Chrome extension and works on any page you're viewing — localhost, staging, or production.</p>
+    
+    <h2>Step 2: Run a Scan</h2>
+    <p>Open the extension popup and click 'Scan page.' In seconds you'll get a report showing:</p>
+    <ul>
+      <li>Which WCAG criteria failed and which passed</li>
+      <li>Exact elements that need fixing</li>
+      <li>Severity ratings so you can triage</li>
+    </ul>
+    
+    <h2>Step 3: Annotate and Export</h2>
+    <p>Use the annotation pins to mark issues directly on the page. This is much easier than sending screenshots — your developer or designer can click the pin and see exactly what needs fixing.</p>
+    <p>Export the report as Markdown and paste it into your issue tracker or pull request. Now accessibility issues are tracked the same way as any other bug.</p>
+    
+    <h2>Why Automated Checking Matters</h2>
+    <p>Manual accessibility testing is essential — automated tools can only catch about 30% of potential issues. But that 30% is the low-hanging fruit that you can fix in minutes. Missing alt text, low-contrast text, missing form labels — these are the things users actually notice every day.</p>
+
+    <div class="cta-box">
+      <h3>Get a11y-annotator</h3>
+      <p>16 WCAG checks, annotation pins, Markdown export — all offline — $4.99 one-time</p>
+      <a href="https://a11y-annotator.vercel.app">Try a11y-annotator →</a>
+    </div>
+  </article>
+  <p><a href="/blog/" style="color: #8b949e;">← Back to articles</a></p>
+</body>
+</html>
