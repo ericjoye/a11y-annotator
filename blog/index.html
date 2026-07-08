@@ -1,39 +1,34 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Blog — a11y-annotator</title>
-  <meta name="description" content="Accessibility guides and resources from a11y-annotator">
-  <link rel="stylesheet" href="../style.css">
+  <title>a11y-annotator Blog</title>
+  <meta name="description" content="Accessibility tips and guides for frontend developers">
+  <meta name="keywords" content="a11y, accessibility, WCAG, web development, chrome extension">
   <style>
-    body { font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif; max-width: 720px; margin: 0 auto; padding: 2rem 1rem; line-height: 1.6; color: #1a1a1a; }
-    h1 { font-size: 1.8rem; margin-bottom: 0.25rem; }
-    .subtitle { color: #555; margin-top: 0; margin-bottom: 2rem; }
-    ul { list-style: none; padding: 0; }
-    li { margin-bottom: 1.5rem; padding-bottom: 1.5rem; border-bottom: 1px solid #eee; }
-    li:last-child { border-bottom: none; }
-    a { color: #0055cc; text-decoration: none; font-size: 1.15rem; font-weight: 600; }
+    body { font-family: -apple-system, system-ui, sans-serif; max-width: 720px; margin: 0 auto; padding: 20px; background: #0d1117; color: #c9d1d9; line-height: 1.6; }
+    a { color: #58a6ff; text-decoration: none; }
     a:hover { text-decoration: underline; }
-    .desc { color: #444; margin: 0.25rem 0 0; font-size: 0.95rem; }
-    .date { color: #888; font-size: 0.85rem; }
+    .article { background: #161b22; border: 1px solid #30363d; border-radius: 8px; padding: 16px; margin: 12px 0; }
+    h1 { color: #58a6ff; }
+    .meta { color: #8b949e; font-size: 0.9em; }
   </style>
 </head>
 <body>
   <h1>a11y-annotator Blog</h1>
-  <p class="subtitle">Accessibility guides, tools, and best practices</p>
-  <ul>
-    <li>
-      <a href="wcag-accessibility-guide.html">Complete WCAG Accessibility Guide: Standards, Levels &amp; Compliance</a>
-      <p class="desc">A comprehensive overview of WCAG standards, conformance levels (A, AA, AAA), and how to achieve compliance.</p>
-      <span class="date">Published July 2026</span>
-    </li>
-    <li>
-      <a href="accessibility-audit-5-minutes.html">How to Run an Accessibility Audit in 5 Minutes</a>
-      <p class="desc">A quick-start guide to auditing your website for accessibility issues using free tools and manual checks.</p>
-      <span class="date">Published July 2026</span>
-    </li>
-  </ul>
-  <p><a href="/">&larr; Back to a11y-annotator</a></p>
+  <p>Accessibility tips, guides, and best practices for frontend developers.</p>
+  
+  <div class="article">
+    <a href="wcag-accessibility-guide.html"><h2>WCAG Accessibility: A Practical Guide for Frontend Developers</h2></a>
+    <div class="meta">July 8, 2026 · 4 min read</div>
+    <p>If you build websites for a living, accessibility compliance isn't optional. Here's how to integrate WCAG checks into your dev workflow.</p>
+  </div>
+  
+  <div class="article">
+    <a href="accessibility-audit-5-minutes.html"><h2>How to Audit Your Website for Accessibility in 5 Minutes</h2></a>
+    <div class="meta">July 8, 2026 · 4 min read</div>
+    <p>A fast, repeatable workflow for catching the most common accessibility issues before your users do.</p>
+  </div>
+  
+  <p style="margin-top: 40px; color: #8b949e;"><a href="/">← Back to a11y-annotator</a></p>
 </body>
 </html>
