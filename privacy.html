@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html lang="en"><head>
+<meta charset="utf-8"><meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Privacy Policy — a11y-annotator</title>
+<style>
+body{font-family:-apple-system,BlinkMacSystemFont,'Segoe UI',Roboto,sans-serif;max-width:760px;margin:0 auto;padding:40px 24px;color:#1a1a2e;line-height:1.7;background:#fff}
+h1{font-size:2rem;border-bottom:2px solid #22c55e;padding-bottom:12px}
+h2{font-size:1.25rem;margin-top:32px;color:#0f766e}
+code{background:#f1f5f9;padding:2px 6px;border-radius:4px;font-size:0.9em}
+a{color:#0f766e}
+ul{padding-left:22px}
+</style></head><body>
+<h1>Privacy Policy — a11y-annotator</h1>
+<p><strong>Last updated:</strong> June 20, 2026</p>
+<h2>Overview</h2>
+<p>a11y-annotator (&quot;we&quot;, &quot;our&quot;, &quot;the extension&quot;) is a Chrome extension that scans web pages for accessibility issues, lets you annotate them visually, and exports shareable reports. We are committed to protecting your privacy.</p>
+<h2>Data Collection</h2>
+<p><strong>a11y-annotator does NOT collect, store, or transmit any personal data.</strong></p>
+<p>All scanning, analysis, and annotation happens locally in your browser. When you use a11y-annotator:</p>
+<ul>
+<li><strong>No data is sent to external servers.</strong> Accessibility scans are performed entirely within your browser using a bundled copy of axe-core. Nothing is uploaded anywhere.</li>
+<li><strong>No tracking or analytics.</strong> We do not use Google Analytics, Mixpanel, or any other tracking service.</li>
+<li><strong>No cookies.</strong> a11y-annotator does not set or read any cookies.</li>
+<li><strong>No account required.</strong> There is no signup, login, or user account system.</li>
+</ul>
+<h2>Local Storage</h2>
+<p>The only data stored by a11y-annotator is kept locally in your browser using Chrome&#x27;s <code>chrome.storage.session</code> API:</p>
+<ul>
+<li><strong>Annotation notes</strong> — Text notes you attach to accessibility issues on a page. These persist only for the current browser session and are automatically cleared when the session ends.</li>
+<li><strong>Overlay visibility state</strong> — Whether the annotation overlay is shown or hidden.</li>
+</ul>
+<p>This data never leaves your device and is never persisted to disk.</p>
+<h2>Permissions</h2>
+<p>a11y-annotator requests the following Chrome permissions:</p>
+<ul>
+<li><strong>activeTab</strong> — To access the currently active tab when you click the extension icon. Used only to scan the page you&#x27;re viewing for accessibility issues.</li>
+<li><strong>scripting</strong> — To inject content scripts that perform accessibility analysis on web pages.</li>
+<li><strong>storage</strong> — To store annotation notes and UI state locally in your browser via <code>chrome.storage.session</code>.</li>
+<li><strong>sidePanel</strong> — To display the issue dashboard in Chrome&#x27;s side panel.</li>
+</ul>
+<h2>Host Permissions</h2>
+<p>a11y-annotator requests <code>&lt;all_urls&gt;</code> access because it needs to scan any webpage you choose for accessibility issues. This permission is used solely for local analysis — no data is transmitted externally.</p>
+<h2>Third-Party Services</h2>
+<p>a11y-annotator integrates with <strong>Stripe</strong> for Pro tier payments. When you click an upgrade button, you are redirected to Stripe&#x27;s hosted checkout page. Stripe&#x27;s own privacy policy applies to that transaction. a11y-annotator does not process or store payment information.</p>
+<h2>Open Source Components</h2>
+<p>a11y-annotator bundles <strong>axe-core</strong> (MPL-2.0 license), an open-source accessibility engine by Deque Systems. axe-core runs entirely locally and does not make network requests. If you modify axe-core, MPL-2.0 requires you to disclose those modifications.</p>
+<h2>Changes to This Policy</h2>
+<p>We may update this privacy policy from time to time. Any changes will be reflected in the extension&#x27;s listing on the Chrome Web Store and in the extension&#x27;s source code.</p>
+<h2>Contact</h2>
+<p>If you have questions about this privacy policy, contact us at: support@ericjoye.com</p>
+</body></html>
