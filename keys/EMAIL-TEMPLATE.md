@@ -1,6 +1,6 @@
 # Key Delivery Email — Template
 
-Placeholders: `{{KEY}}`, `{{BUYER_EMAIL}}`, `{{PAYMENT_ID}}`. Fill and send from theoyax@gmail.com within 24 hours of payment (target: same day).
+Placeholders: `{{KEY}}`, `{{BUYER_EMAIL}}`, `{{PAYMENT_ID}}`. Fill and send from support@ericjoye.com within 24 hours of payment (target: same day).
 
 ---
 
@@ -22,7 +22,7 @@ Thanks for picking up a11y-annotator Pro. Here's your license key:
 
 Payment reference: {{PAYMENT_ID}} (keep this — you'll need it if you ever need the key reissued).
 
-**Questions or something not working?** Reply to this email or write theoyax@gmail.com — I answer within 24-48 hours.
+**Questions or something not working?** Reply to this email or write support@ericjoye.com — I answer within 24-48 hours.
 
 **Not happy with it?** Full refund, no questions asked, within 14 days — see the refund policy on the site, or just reply here.
 
