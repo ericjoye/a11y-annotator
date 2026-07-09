@@ -13,14 +13,14 @@
 
 Primary URL: **https://landing-flame-zeta-10.vercel.app**
 
-Business directory: `/home/ericjoye/businesses/a11y-annotator/`
+Business directory: `~/businesses/a11y-annotator/`
 
 ---
 
 ## Self-Drill Transcript (commands + outputs)
 
 ```text
-$ cd /home/ericjoye/businesses/a11y-annotator
+$ cd ~/businesses/a11y-annotator
 $ node scripts/license-drill.js
 PASS  signer issues a key — A11Y-PRO.eyJwcm...vdGF...
 PASS  issued key verifies — {"ok":true,"meta":{"pi":"85342278","iat":"2026-07-09","tier":"pro"}}
@@ -60,7 +60,7 @@ content-length: 34330
 ## Product Architecture
 
 ```
-/home/ericjoye/businesses/a11y-annotator/
+~/businesses/a11y-annotator/
 ├── manifest.json
 ├── background.js
 ├── license.js
@@ -144,10 +144,10 @@ curl -I https://landing-flame-zeta-10.vercel.app
 
 ## Artifact Paths
 
-- `/home/ericjoye/businesses/a11y-annotator/BUILD-REPORT.md`
-- `/home/ericjoye/businesses/a11y-annotator/DRILL-REPORT.md`
-- `/home/ericjoye/businesses/a11y-annotator/TEST-REPORT.md`
-- `/home/ericjoye/businesses/a11y-annotator/FULFILLMENT-SOP.md`
-- `/home/ericjoye/businesses/a11y-annotator/landing/index.html`
-- `/home/ericjoye/businesses/a11y-annotator/landing/vercel.json`
-- `/home/ericjoye/businesses/a11y-annotator/a11y-annotator.zip`
+- `~/businesses/a11y-annotator/BUILD-REPORT.md`
+- `~/businesses/a11y-annotator/DRILL-REPORT.md`
+- `~/businesses/a11y-annotator/TEST-REPORT.md`
+- `~/businesses/a11y-annotator/FULFILLMENT-SOP.md`
+- `~/businesses/a11y-annotator/landing/index.html`
+- `~/businesses/a11y-annotator/landing/vercel.json`
+- `~/businesses/a11y-annotator/a11y-annotator.zip`

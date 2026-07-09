@@ -30,13 +30,13 @@ DISTRIBUTION STATUS
 -------------------
 Chrome Web Store: NOT SUBMITTED
   - Item ID: (pending creation in CWS Dashboard)
-  - Status: Draft ZIP ready at /home/ericjoye/businesses/a11y-annotator/dist/a11y-annotator-0.1.0.zip
+  - Status: Draft ZIP ready at ~/businesses/a11y-annotator/dist/a11y-annotator-0.1.0.zip
   - Category: Developer Tools / Productivity
   - Screenshots: Need 3+ (popup, extraction, license) — generate via generate_screenshots.py
   - Privacy Policy: Hosted at https://landing-flame-zeta-10.vercel.app/privacy.html
 
 Landing Page (Vercel): LIVE
-  - Local: /home/ericjoye/businesses/a11y-annotator/landing/index.html
+  - Local: ~/businesses/a11y-annotator/landing/index.html
   - Production URL: https://landing-flame-zeta-10.vercel.app (200 OK verified)
   - CTA hrefs: Point to Stripe LIVE link + CWS placeholder
   - Vercel alias: landing-flame-zeta-10.vercel.app
@@ -46,7 +46,7 @@ Stripe Payments: LIVE MODE
   - stripe.json updated with live IDs (verify after stripe_setup.py)
 
 SEO Content (GitHub Pages): NOT CREATED
-  - Blog directory: /home/ericjoye/businesses/a11y-annotator/blog/ (needs creation)
+  - Blog directory: ~/businesses/a11y-annotator/blog/ (needs creation)
   - Articles planned: 2 (WCAG annotation handoff, batch scanning)
   - gh-pages branch push: NOT DONE
 
@@ -78,24 +78,24 @@ Result: PASS (6/6) — fulfillment chain is real
 
 REPO ARTIFACTS
 --------------
-- Extension source: /home/ericjoye/businesses/a11y-annotator/
-- Landing: /home/ericjoye/businesses/a11y-annotator/landing/index.html
-- Stripe config: /home/ericjoye/businesses/a11y-annotator/stripe.json
-- Build zip: /home/ericjoye/businesses/a11y-annotator/dist/a11y-annotator-0.1.0.zip (create if missing)
-- FULFILLMENT-SOP.md: /home/ericjoye/businesses/a11y-annotator/FULFILLMENT-SOP.md
-- DRILL-REPORT.md: /home/ericjoye/businesses/a11y-annotator/DRILL-REPORT.md
-- TEST-REPORT.md: /home/ericjoye/businesses/a11y-annotator/TEST-REPORT.md
-- BUILD-REPORT.md: /home/ericjoye/businesses/a11y-annotator/BUILD-REPORT.md
-- Launch copy: /home/ericjoye/businesses/a11y-annotator/launch/landing.md, store-listing.md
+- Extension source: ~/businesses/a11y-annotator/
+- Landing: ~/businesses/a11y-annotator/landing/index.html
+- Stripe config: ~/businesses/a11y-annotator/stripe.json
+- Build zip: ~/businesses/a11y-annotator/dist/a11y-annotator-0.1.0.zip (create if missing)
+- FULFILLMENT-SOP.md: ~/businesses/a11y-annotator/FULFILLMENT-SOP.md
+- DRILL-REPORT.md: ~/businesses/a11y-annotator/DRILL-REPORT.md
+- TEST-REPORT.md: ~/businesses/a11y-annotator/TEST-REPORT.md
+- BUILD-REPORT.md: ~/businesses/a11y-annotator/BUILD-REPORT.md
+- Launch copy: ~/businesses/a11y-annotator/launch/landing.md, store-listing.md
 
 LAUNCH ARTIFACTS (THIS TASK)
 ----------------------------
-- Copy: /home/ericjoye/.hermes/kanban/workspaces/t_28ee43f8/launch/ (landing.md already in product dir)
-- Plan: /home/ericjoye/.hermes/kanban/workspaces/t_28ee43f8/launch/LAUNCH-PLAN.md
-- Outreach: /home/ericjoye/.hermes/kanban/workspaces/t_28ee43f8/launch/outreach-emails.md
-- X Draft: /home/ericjoye/.hermes/kanban/workspaces/t_28ee43f8/launch/x-post-draft.md
-- Human Packet: /home/ericjoye/.hermes/kanban/workspaces/t_28ee43f8/launch/HUMAN-PACKET.md
-- Report: /home/ericjoye/.hermes/kanban/workspaces/t_28ee43f8/launch/LAUNCH-REPORT.md (this file)
+- Copy: ~/.hermes/kanban/workspaces/t_28ee43f8/launch/ (landing.md already in product dir)
+- Plan: ~/.hermes/kanban/workspaces/t_28ee43f8/launch/LAUNCH-PLAN.md
+- Outreach: ~/.hermes/kanban/workspaces/t_28ee43f8/launch/outreach-emails.md
+- X Draft: ~/.hermes/kanban/workspaces/t_28ee43f8/launch/x-post-draft.md
+- Human Packet: ~/.hermes/kanban/workspaces/t_28ee43f8/launch/HUMAN-PACKET.md
+- Report: ~/.hermes/kanban/workspaces/t_28ee43f8/launch/LAUNCH-REPORT.md (this file)
 
 BLOCKERS REQUIRING ERIC
 -----------------------

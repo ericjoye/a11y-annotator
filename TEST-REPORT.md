@@ -7,7 +7,7 @@
 - Static landing page: https://landing-flame-zeta-10.vercel.app
 - Live checker: https://a11y-annotator-5cw1ystvk-ricks-projects-039b2c3c.vercel.app
 - Commerce: https://buy.stripe.com/7sY4gAcPm9J7fOe8qcbAs0e
-- Source/business dir: /home/ericjoye/businesses/a11y-annotator
+- Source/business dir: ~/businesses/a11y-annotator
 
 ## Commerce + fulfillment
 - `python3 ~/hermes_ops/fulfillment_gate.py a11y-annotator` -> PASS `fulfillment_implemented=yes`
@@ -31,8 +31,8 @@
 - Mobile/responsive behavior is present via landing CSS, but full manual DOM testing out of scope here -> PASS by code inspection
 
 ## Artifacts
-- `/home/ericjoye/businesses/a11y-annotator/DRILL-REPORT.md`
-- `/home/ericjoye/businesses/a11y-annotator/TEST-REPORT.md`
+- `~/businesses/a11y-annotator/DRILL-REPORT.md`
+- `~/businesses/a11y-annotator/TEST-REPORT.md`
 
 ## Buyable URL
 https://landing-flame-zeta-10.vercel.app

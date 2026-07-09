@@ -27,7 +27,7 @@ PASS  a11y-annotator  fulfillment_implemented=yes
 
 ### 4. License fulfillment
 ```
-$ cd /home/ericjoye/businesses/a11y-annotator
+$ cd ~/businesses/a11y-annotator
 $ node scripts/license-drill.js
 PASS  signer issues a key — A11Y-PRO.eyJwcm...vdGF…
 PASS  issued key verifies — {"ok":true,"meta":{"pi":"89359420","iat":"2026-07-09","tier":"pro"}}
@@ -41,7 +41,7 @@ PASSED (6/6) — fulfillment chain is real.
 
 ### 5. Syntactic + secret audit
 ```
-$ cd /home/ericjoye/businesses/a11y-annotator
+$ cd ~/businesses/a11y-annotator
 $ node --check background.js && node --check license.js && node --check content.js && node --check popup.js && node --check sidepanel.js
 $ secret scan against consumer JS file set: no matches for sk_live, sk_test, AKIA, AIza, or embedded PEM secret markers.
 ```
