@@ -1,0 +1,68 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <title>WCAG Accessibility: A Practical Guide for Frontend Developers</title>
+  <meta name="description" content="WCAG Accessibility: A Practical Guide for Frontend Developers">
+  <meta name="keywords" content="a11y, accessibility, wcag, chrome extension, web accessibility">
+  <meta property="og:title" content="WCAG Accessibility: A Practical Guide for Frontend Developers">
+  <meta property="og:type" content="article">
+  <meta property="og:url" content="https://a11y-annotator.vercel.app">
+  <style>
+    body { font-family: -apple-system, system-ui, sans-serif; max-width: 720px; margin: 0 auto; padding: 20px; background: #0d1117; color: #c9d1d9; line-height: 1.6; }
+    article { margin: 40px 0; }
+    h1, h2, h3 { color: #58a6ff; }
+    .meta { color: #8b949e; font-size: 0.9em; margin-bottom: 24px; }
+    .cta-box { background: #161b22; border: 1px solid #30363d; border-radius: 8px; padding: 24px; margin: 32px 0; text-align: center; }
+    .cta-box h3 { margin-top: 0; }
+    .cta-box a { display: inline-block; background: #238636; color: white; padding: 10px 24px; border-radius: 6px; text-decoration: none; font-weight: 600; margin-top: 12px; }
+    .cta-box a:hover { background: #2ea043; }
+    code { background: #161b22; padding: 2px 6px; border-radius: 4px; font-size: 0.9em; }
+    pre { background: #161b22; padding: 16px; border-radius: 8px; overflow-x: auto; }
+    img { max-width: 100%; border-radius: 6px; }
+  </style>
+</head>
+<body>
+  <article>
+    <h1>WCAG Accessibility: A Practical Guide for Frontend Developers</h1>
+    <div class="meta">July 08, 2026 · 4 min read</div>
+    
+    <p>If you build websites for a living, accessibility compliance isn't optional — it's the law in many jurisdictions and a requirement for any serious project. But actually <em>running</em> accessibility checks during development is still something most teams do manually, if at all.</p>
+    
+    <h2>The Problem with Accessibility Tooling</h2>
+    <p>Existing tools require you to paste a URL into a web service, wait for a report, and pay per scan. That workflow breaks the development loop — you leave your editor, open a new tab, and context-switch. Most developers skip it.</p>
+    
+    <h2>A Better Way</h2>
+    <p>a11y-annotator runs accessibility checks directly in your browser, right where you're already working. No accounts, no server round-trips, no per-scan pricing:</p>
+    <ul>
+      <li><strong>16 WCAG success criteria</strong> — from contrast ratios to ARIA attribute validation</li>
+      <li><strong>Annotation pins</strong> — mark issues directly on the page for your team</li>
+      <li><strong>Markdown export</strong> — attach the report to your PR or ticket</li>
+      <li><strong>Works offline</strong> — nothing leaves your browser</li>
+    </ul>
+    
+    <h2>What You Can Check</h2>
+    <p>The extension scans for the most common accessibility failures:</p>
+    <ul>
+      <li>Color contrast ratios (WCAG AA/AAA)</li>
+      <li>Missing image alt text</li>
+      <li>Improper heading hierarchy</li>
+      <li>ARIA attribute misuse</li>
+      <li>Focus indicators on interactive elements</li>
+      <li>Form label associations</li>
+    </ul>
+    
+    <h2>Adding Accessibility to Your Workflow</h2>
+    <p>The key is to check early and check often. Run a11y-annotator before you commit, before you push to staging, and definitely before any client review. Catching issues early means they never make it into production where real users hit them.</p>
+    
+    <h2>Beyond the Basics</h2>
+    <p>WCAG compliance is a moving target — Level A, AA, and AAA each add additional requirements. a11y-annotator helps you track where you are against each level, so you can prioritize fixes by impact.</p>
+
+    <div class="cta-box">
+      <h3>Get a11y-annotator</h3>
+      <p>16 WCAG checks, annotation pins, Markdown export — all offline — $4.99 one-time</p>
+      <a href="https://a11y-annotator.vercel.app">Try a11y-annotator →</a>
+    </div>
+  </article>
+  <p><a href="/blog/" style="color: #8b949e;">← Back to articles</a></p>
+</body>
+</html>
