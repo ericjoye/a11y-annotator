@@ -1,34 +1,53 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-  <title>a11y-annotator Blog</title>
-  <meta name="description" content="Accessibility tips and guides for frontend developers">
-  <meta name="keywords" content="a11y, accessibility, WCAG, web development, chrome extension">
+  <title>a11y-annotator Blog — Accessibility Articles</title>
+  <meta name="description" content="Articles about web accessibility, WCAG compliance, automated testing, and audit workflows from the a11y-annotator team.">
+  <meta name="keywords" content="a11y, accessibility, WCAG, blog, web development, accessibility testing">
+  <meta property="og:title" content="a11y-annotator Blog">
+  <meta property="og:type" content="website">
+  <meta property="og:url" content="https://ericjoye.github.io/a11y-annotator/blog/">
   <style>
     body { font-family: -apple-system, system-ui, sans-serif; max-width: 720px; margin: 0 auto; padding: 20px; background: #0d1117; color: #c9d1d9; line-height: 1.6; }
-    a { color: #58a6ff; text-decoration: none; }
-    a:hover { text-decoration: underline; }
-    .article { background: #161b22; border: 1px solid #30363d; border-radius: 8px; padding: 16px; margin: 12px 0; }
     h1 { color: #58a6ff; }
-    .meta { color: #8b949e; font-size: 0.9em; }
+    .article-list { list-style: none; padding: 0; }
+    .article-list li { border-bottom: 1px solid #21262d; padding: 16px 0; }
+    .article-list a { color: #58a6ff; text-decoration: none; font-size: 1.1em; font-weight: 600; }
+    .article-list a:hover { text-decoration: underline; }
+    .meta { color: #8b949e; font-size: 0.85em; margin-top: 4px; }
+    .cta { margin-top: 32px; padding: 16px; background: #161b22; border: 1px solid #30363d; border-radius: 8px; text-align: center; }
+    .cta a { color: #238636; font-weight: 600; text-decoration: none; }
   </style>
 </head>
 <body>
   <h1>a11y-annotator Blog</h1>
-  <p>Accessibility tips, guides, and best practices for frontend developers.</p>
-  
-  <div class="article">
-    <a href="wcag-accessibility-guide.html"><h2>WCAG Accessibility: A Practical Guide for Frontend Developers</h2></a>
-    <div class="meta">July 8, 2026 · 4 min read</div>
-    <p>If you build websites for a living, accessibility compliance isn't optional. Here's how to integrate WCAG checks into your dev workflow.</p>
+  <p>Web accessibility tips, WCAG compliance guides, and audit workflows for developers and freelancers.</p>
+
+  <ul class="article-list">
+    <li>
+      <a href="wcag-22-checklist-web-audit.html">WCAG 2.2 AA Checklist: What Every Web Audit Needs</a>
+      <div class="meta">July 13, 2026 · Complete checklist of all AA criteria for WCAG 2.2 compliance — what to test and how to pass.</div>
+    </li>
+    <li>
+      <a href="documenting-accessibility-issues-client-reports.html">How to Document Accessibility Issues for Client Audit Reports</a>
+      <div class="meta">July 13, 2026 · Turn WCAG findings into actionable developer tickets that actually get fixed. Templates and workflows included.</div>
+    </li>
+    <li>
+      <a href="automated-wcag-testing-freelance.html">Automated WCAG Compliance Testing for Freelance Developers</a>
+      <div class="meta">July 13, 2026 · Compare automated a11y testing tools and build an efficient audit workflow for your freelance practice.</div>
+    </li>
+    <li>
+      <a href="wcag-accessibility-guide.html">WCAG Accessibility: A Practical Guide for Frontend Developers</a>
+      <div class="meta">July 08, 2026 · Practical WCAG compliance guide for frontend developers — what to check and how to fix common issues.</div>
+    </li>
+    <li>
+      <a href="accessibility-audit-5-minutes.html">How to Audit Your Website for Accessibility in 5 Minutes</a>
+      <div class="meta">July 08, 2026 · A 5-minute workflow to catch the most common accessibility issues on any website.</div>
+    </li>
+  </ul>
+
+  <div class="cta">
+    <a href="https://ericjoye.github.io/a11y-annotator/">← Back to a11y-annotator</a> &nbsp;|&nbsp; <a href="https://buy.stripe.com/7sY4gAcPm9J7fOe8qcbAs0e">Get a11y-annotator $4.99 →</a>
   </div>
-  
-  <div class="article">
-    <a href="accessibility-audit-5-minutes.html"><h2>How to Audit Your Website for Accessibility in 5 Minutes</h2></a>
-    <div class="meta">July 8, 2026 · 4 min read</div>
-    <p>A fast, repeatable workflow for catching the most common accessibility issues before your users do.</p>
-  </div>
-  
-  <p style="margin-top: 40px; color: #8b949e;"><a href="/">← Back to a11y-annotator</a></p>
 </body>
 </html>

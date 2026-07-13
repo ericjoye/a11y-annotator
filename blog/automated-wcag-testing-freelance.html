@@ -1,0 +1,97 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <title>Automated WCAG Compliance Testing for Freelance Developers</title>
+  <meta name="description" content="Compare automated WCAG compliance tools for freelance developers. Learn what checks to run and how to choose the right a11y testing workflow.">
+  <meta name="keywords" content="wcag compliance testing, accessibility checker automation, freelance developer a11y, chrome extension wcag, automated accessibility audit">
+  <meta property="og:title" content="Automated WCAG Compliance Testing for Freelance Developers">
+  <meta property="og:type" content="article">
+  <meta property="og:url" content="https://ericjoye.github.io/a11y-annotator/blog/">
+  <style>
+    body { font-family: -apple-system, system-ui, sans-serif; max-width: 720px; margin: 0 auto; padding: 20px; background: #0d1117; color: #c9d1d9; line-height: 1.6; }
+    article { margin: 40px 0; }
+    h1, h2, h3 { color: #58a6ff; }
+    .meta { color: #8b949e; font-size: 0.9em; margin-bottom: 24px; }
+    .cta-box { background: #161b22; border: 1px solid #30363d; border-radius: 8px; padding: 24px; margin: 32px 0; text-align: center; }
+    .cta-box h3 { margin-top: 0; }
+    .cta-box a { display: inline-block; background: #238636; color: white; padding: 10px 24px; border-radius: 6px; text-decoration: none; font-weight: 600; margin-top: 12px; }
+    .cta-box a:hover { background: #2ea043; }
+    code { background: #161b22; padding: 2px 6px; border-radius: 4px; font-size: 0.9em; }
+    pre { background: #161b22; padding: 16px; border-radius: 8px; overflow-x: auto; }
+    ul { padding-left: 20px; }
+    li { margin-bottom: 6px; }
+    table { border-collapse: collapse; width: 100%; margin: 16px 0; }
+    th, td { border: 1px solid #30363d; padding: 8px 12px; text-align: left; }
+    th { background: #161b22; color: #58a6ff; }
+  </style>
+</head>
+<body>
+  <article>
+    <h1>Automated WCAG Compliance Testing for Freelance Developers</h1>
+    <div class="meta">July 13, 2026 · 6 min read</div>
+    
+    <p>If you're a freelance developer building client websites, accessibility compliance is no longer optional. ADA lawsuits, WCAG requirements in RFPs, and client insurance mandates are driving demand for accessible sites — and as the person building them, you're the one on the hook.</p>
+    
+    <p>But running a full accessibility audit on every project is time you don't have. Automated WCAG testing bridges the gap: it catches ~30% of issues instantly so you can fix them before the site ever reaches a manual auditor.</p>
+    
+    <h2>What Automated WCAG Testing Actually Checks</h2>
+    <p>A good automated scanner catches the issues that are straightforward to detect programmatically:</p>
+    <ul>
+      <li><strong>Color contrast ratios</strong> — text against background, both normal and large text thresholds for AA and AAA</li>
+      <li><strong>Missing or empty alt text</strong> — images without alternative text descriptions</li>
+      <li><strong>Improper heading hierarchy</strong> — skipping levels, empty headings, or non-semantic heading elements</li>
+      <li><strong>ARIA attribute misuse</strong> — invalid roles, missing required attributes, redundant ARIA on native semantics</li>
+      <li><strong>Form label associations</strong> — inputs without matching labels, placeholder-as-label anti-patterns</li>
+      <li><strong>Focus indicators</strong> — interactive elements that lose or hide their visible focus ring</li>
+      <li><strong>Document structure</strong> — missing lang attribute, duplicate IDs, missing landmarks</li>
+    </ul>
+    
+    <h2>Choosing the Right Tool for Freelance Work</h2>
+    <p>Most accessibility tools fall into one of three categories. Here's how they compare for freelancers:</p>
+    
+    <table>
+      <tr><th>Tool Type</th><th>Best For</th><th>Catch</th></tr>
+      <tr><td>Online scanner (WAVE, axe)</td><td>Quick one-off checks</td><td>Can't test localhost, requires uploading URLs, no per-element markup</td></tr>
+      <tr><td>Browser DevTools</td><td>Deep debugging</td><td>Only checks one element at a time, no full-page report</td></tr>
+      <tr><td>Local extension scanner</td><td>Daily workflow integration</td><td>Some extensions send data to servers — privacy concern for client sites</td></tr>
+    </table>
+    
+    <p>The key tradeoff is <em>where</em> the checks run. Cloud-based scanners can't test staging or localhost environments — they only work on publicly accessible URLs. For a freelance developer, the ability to test a client's staging site (or your own local dev build) before deploying to production is critical.</p>
+    
+    <h2>Integrating Automated Testing Into Your Workflow</h2>
+    <p>The most efficient approach is to run automated checks at three points in your development cycle:</p>
+    
+    <h3>During Development</h3>
+    <p>As you build components, scan the page in your dev server. Fix color contrast, alt text, and heading issues immediately — they take minutes to fix now and days to track down later.</p>
+    
+    <h3>Before Staging Deployment</h3>
+    <p>Scan the full site on your staging server. Export the report as Markdown and attach it to your deployment notes. This creates a paper trail for the client showing you checked accessibility before launch.</p>
+    
+    <h3>Before Client Review</h3>
+    <p>Run one final scan and annotate any known limitations. If the client's brand colors fail contrast checks, you'll have the data ready to discuss — rather than getting called out in the review meeting.</p>
+    
+    <h2>Why Local Processing Matters for Freelancers</h2>
+    <p>When you work with multiple clients, you're handling sensitive code and often private staging URLs. A scanner that runs <em>entirely in your browser</em> — no server upload, no account creation, no data leaving your machine — means you can test any client site without worrying about where your scanning data is stored.</p>
+    
+    <p>This is especially important for healthcare, legal, and finance clients where data privacy is contractually enforced.</p>
+    
+    <h2>What Automation Can't Do (Yet)</h2>
+    <p>Automated tools catch the low-hanging fruit — roughly 30% of WCAG issues according to multiple studies. The other 70% require human judgment:</p>
+    <ul>
+      <li>Screen reader navigation flow and logical reading order</li>
+      <li>Keyboard navigation patterns (tab order, skip links, focus trapping)</li>
+      <li>Alternative text quality (does the description convey the right information?)</li>
+      <li>Complex widget accessibility (modals, carousels, drag-and-drop)</li>
+    </ul>
+    
+    <p>That said, fixing the automated-detection issues first means your manual auditor can focus on the harder problems — and that saves you money if you're paying for manual audits.</p>
+
+    <div class="cta-box">
+      <h3>Get a11y-annotator</h3>
+      <p>20+ automated WCAG checks, annotation pins on every issue, Markdown/PDF export — all offline, all local — $4.99 one-time</p>
+      <a href="https://ericjoye.github.io/a11y-annotator/">Try a11y-annotator →</a>
+    </div>
+  </article>
+  <p><a href="/blog/" style="color: #8b949e;">← Back to articles</a></p>
+</body>
+</html>
