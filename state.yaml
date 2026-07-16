@@ -1,10 +1,10 @@
 project:
   slug: a11y-annotator
-  status: building
+  status: live
 pipeline:
-  current_stage: tester
-  next_stage_recommended: seller
-  next_stage_reason: "Monetization + license unlock verified working. All DDD features present. Pro gate functional at popup + content script level. Fulfillment is real: valid key unlocks CSV/JSON/batch scan. Free tier genuinely useful. No hardcoded secrets. Product is sellable."
+  current_stage: seller
+  next_stage_recommended: none
+  next_stage_reason: "MERCHANT launch complete. Product LIVE: GH Pages, Vercel landing, Stripe checkout, license fulfillment verified. Marketing cycle ready."
   transitions:
     - from: builder
       to: tester

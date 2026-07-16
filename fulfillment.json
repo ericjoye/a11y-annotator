@@ -1,0 +1,9 @@
+{
+  "type": "digital-download",
+  "price_id": "price_1TlKMRIFomlmzi58G0O8680Z",
+  "zip_path": "a11y-annotator.zip",
+  "email_template": {
+    "subject": "Your a11y-annotator Pro download",
+    "body": "Thanks for purchasing a11y-annotator Pro!\n\nYour download is attached to this email.\n\nTo install:\n1. Unzip the file\n2. Open Chrome and go to chrome://extensions\n3. Enable Developer mode (top right)\n4. Click Load unpacked and select the unzipped folder\n5. The extension is ready to use\n\nFor help, reply to this email.\n\n- support@ericjoye.com"
+  }
+}

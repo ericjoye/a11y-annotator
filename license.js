@@ -22,8 +22,8 @@
   const PUBLIC_KEY_JWK = {
     kty: 'EC',
     crv: 'P-256',
-    x: 'IrcfnvbvHRITxKMBRC0rm1FWEnduDB9ZUW2_5Hi4j3U',
-    y: '0L34ZpA-xPMfXhHiY3h-070-hCHS3A7mcbTiikWaI54',
+    x: 'nbzp2LDj1HxPKDgUsPoff5yFOB-bLVHfks-yKfHRL2o',
+    y: 'oziGwH5Ocf8XaommzjKE0w40eLPomd1gqriFvTRU6Tw',
   };
 
   const subtle = (typeof crypto !== 'undefined' && crypto.subtle) ? crypto.subtle : null;
