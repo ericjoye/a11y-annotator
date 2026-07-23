@@ -1,0 +1,55 @@
+product: a11y-annotator
+interests:
+  - WCAG annotations
+  - web accessibility visual feedback
+  - a11y issue pinning
+  - accessibility testing tools
+  - browser accessibility extension
+  - WCAG compliance reporting
+
+icp_profile:
+  title_roles:
+    - web developer
+    - frontend developer
+    - QA engineer
+    - accessibility specialist
+    - engineering manager
+    - product manager
+    - UX designer
+    - compliance officer
+  pain_points:
+    - a11y annotation
+    - accessibility report
+    - WCAG violation
+    - screen reader testing
+    - accessibility testing
+    - color contrast
+    - accessibility issue
+    - keyboard navigation
+    - aria label
+    - focus indicator
+
+competing_github_repos:
+  - "dequelabs/axe-core"
+  - "pa11y/pa11y"
+  - "webhintio/hint"
+  - "google/chrome-lighthouse"
+  - "bbc/accessibility-news-toolkit"
+  - "squizlabs/HTML_CodeSniffer"
+  - "alphagov/wcag-primer"
+
+hn_search_queries:
+  - '"a11y" annotation tool'
+  - '"WCAG" chrome extension'
+  - '"accessibility checker" extension'
+  - '"a11y" testing tool'
+  - '"accessibility audit" tool free'
+  - '"WCAG compliance" chrome'
+  - '"a11y" visual feedback'
+
+enabled_collectors:
+  - github
+  - hn
+
+max_prospects_per_day: 15
+min_qualification_score: 0.5
